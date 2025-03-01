@@ -1,0 +1,3 @@
+internal=postgresql://flask_react_zustand_user:Dc25VIWOYePFQ1M3ncZpobalc5yUNFZm@dpg-culrm8btq21c7385rpbg-a/flask_react_zustand
+external=postgresql://flask_react_zustand_user:Dc25VIWOYePFQ1M3ncZpobalc5yUNFZm@dpg-culrm8btq21c7385rpbg-a.oregon-postgres.render.com/flask_react_zustand
+psql_command=PGPASSWORD=Dc25VIWOYePFQ1M3ncZpobalc5yUNFZm psql -h dpg-culrm8btq21c7385rpbg-a.oregon-postgres.render.com -U flask_react_zustand_user flask_react_zustand
