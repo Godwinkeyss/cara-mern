@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { useNavigate } from 'react-router-dom';
-import { Store } from '../store';
+import { Store } from '../Store';
 
 const ShippingScreen = () => {
   const navigate = useNavigate();
