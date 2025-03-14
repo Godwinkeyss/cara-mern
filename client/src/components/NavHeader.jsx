@@ -55,6 +55,7 @@ function OffcanvasExample() {
                         </Nav>
                         <Nav>
                             <Nav.Link href="#cart" style={{ position: 'relative' }}>
+                                <Link to='/cart'>
                                 <div>
                                 <i className="fa-solid fa-bag-shopping"></i>
                                 <span
@@ -77,6 +78,7 @@ function OffcanvasExample() {
                                     {cart.cartItems.length > 0 ? cart.cartItems.reduce((a, c) => a  + c.quantity, 0): 0}
                                 </span>
                                 </div>
+                                </Link>
                             </Nav.Link>
                         </Nav>
                     </Offcanvas.Body>

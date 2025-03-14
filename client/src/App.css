@@ -523,7 +523,7 @@ body {
 }
 .product-screen-left{
   flex:1;
-  width:100%;
+  /* width:100%; */
 }
 .product-screen-right{
   flex:1;
