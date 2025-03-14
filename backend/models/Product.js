@@ -11,13 +11,18 @@ const productSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
-    image:{
-        type:String,
+    images:{
+        type:[String],
         required:true,
     },
     brand:{
         type:String,
         required:true
+    },
+    size:{
+        type:[String],
+        required:true,
+        default:'L'
     },
     category:{
         type:String,

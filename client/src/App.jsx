@@ -1,36 +1,68 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { toast, ToastContainer, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Feature from './components/Feature';
-import FeatureProduct from './components/FeatureProduct';
-import HomeBanner from './components/HomeBanner';
-import NewArrival from './components/NewArrival';
-import HomeSmallBanner from './components/HomeSmallBanner';
-import HomeBanner3 from './components/HomeBanner3';
-import NewsLetter from './components/NewsLetter';
+import NavHeader from './components/NavHeader';
+
 import Footer from './components/Footer';
+import HomeScreen from './pages/HomeScreen';
+import CartScreen from './pages/CartScreen';
+import ProfileScreen from './pages/ProfileScreen';
+import SignUpScreen from './pages/SignUpScreen';
+import SigninScreen from './pages/SigninScreen';
+import PlaceOrderScreen from './pages/PlaceOrderScreen';
+import OrderScreen from './pages/OrderScreen';
+import OrderHistoryScreen from './pages/OrderHistoryScreen';
+import PaymentScreen from './pages/PaymentScreen';
+import ShippingScreen from './pages/ShippingScreen';
+import ProductScreen from './pages/ProductScreen';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Header />
-
-      <Hero />
-
-      <Feature />
-
-      <FeatureProduct />
-      <HomeBanner />
-      <NewArrival />
-      <HomeSmallBanner />
-      <HomeBanner3 />
-      <NewsLetter />
-      <Footer />
+      <BrowserRouter>
+        <div className="site-container">
+          <div className="head">
+            {/* <Header /> */}
+            <NavHeader />
+          </div>
+          <div className="main">
+            <Routes>
+              <Route path="/orderHistory" element={<OrderHistoryScreen />} />
+              <Route path="/order/:id" element={<OrderScreen />} />
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route path="/payment" element={<PaymentScreen />} />
+              <Route path="/shipping" element={<ShippingScreen />} />
+              <Route path="/signup" element={<SignUpScreen />} />
+              <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
+              <Route path="/cart" element={<CartScreen />} />
+              <Route path="/products/:slug" element={<ProductScreen />} />
+              <Route path="/" element={<HomeScreen />} />
+            </Routes>
+          </div>
+          <div className="foot">
+            <Footer />
+          </div>
+        </div>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Bounce}
+        />
+      </BrowserRouter>
     </>
   );
 }

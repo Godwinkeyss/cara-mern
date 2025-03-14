@@ -1,22 +1,29 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
+import Rating from './Rating'
 const Product = ({product}) => {
   return (
     <div className='product'>
-    <img src={product.image} alt={product.name} />
+      <Link to={`/products/${product.slug}`}>
+      {product.images?.[0] ? (
+        <Link to={`/products/${product.slug}`}>
+          <img src={product.images[0]} alt={product.name} />
+        </Link>
+      ) : (
+         <Link to={`/products/${product.slug}`}>
+          <img src={product.image} alt={product.name} />
+        </Link>
+      )}
+      </Link>
     <div className='desc'>
       <span>Adida</span>
-      <h5>{product.name}</h5>
+      <h5> <Link to={`/products/slug/${product.slug}`}>{product.name}</Link></h5>
       <div className='rating'>
-         <i class="fa-solid fa-star"></i>
-         <i class="fa-solid fa-star"></i>
-         <i class="fa-solid fa-star"></i>
-         <i class="fa-solid fa-star"></i>
-         <i class="fa-solid fa-star"></i>
+        <Rating rating={product.rating} numReview={product.numReviews}/>
       </div>
       <p>${product.price}</p>
     </div>
-      <a href=""><i class="fa-solid fa-cart-shopping cart"></i></a>
+      <a href=""><i className="fa-solid fa-cart-shopping cart"></i></a>
   </div>
   )
 }
