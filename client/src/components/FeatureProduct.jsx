@@ -31,7 +31,7 @@ const FeatureProduct = () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         // const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products`);
-        const res = await axios.get('http://127.0.0.1:5000/api/products');
+        const res = await axios.get('/api/products');
         // setProducts(res.data)
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
       } catch (error) {
