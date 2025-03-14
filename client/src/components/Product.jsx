@@ -21,7 +21,7 @@ const Product = ({product}) => {
       <div className='rating'>
         <Rating rating={product.rating} numReview={product.numReviews}/>
       </div>
-      <p>${product.price}</p>
+      <p>£{product.price}</p>
     </div>
       <a href=""><i className="fa-solid fa-cart-shopping cart"></i></a>
   </div>
