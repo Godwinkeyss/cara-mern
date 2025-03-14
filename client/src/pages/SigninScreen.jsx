@@ -22,7 +22,7 @@ const SigninScreen = () => {
     try{
 
    
-    const {data} = await axios.post('http://127.0.0.1:5000/api/auth/signin',{
+    const {data} = await axios.post('/api/auth/signin',{
       email,
       password
     })

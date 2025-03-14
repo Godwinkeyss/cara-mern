@@ -121,7 +121,7 @@ export default function OrderScreen() {
       try {
         dispatch({ type: 'PAY_REQUEST' });
         const { data } = await axios.put(
-          `http://127.0.0.1:5000/api/orders/${order._id}/pay`,
+          `/api/orders/${order._id}/pay`,
           details,
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
@@ -149,7 +149,7 @@ export default function OrderScreen() {
     const fetchOrder = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`http://127.0.0.1:5000/api/orders/${orderId}`, {
+        const { data } = await axios.get(`/api/orders/${orderId}`, {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
@@ -158,7 +158,7 @@ export default function OrderScreen() {
           try {
             // Make a POST request to the server to create a Stripe PaymentIntent
             const { data: stripeData } = await axios.post(
-              `http://127.0.0.1:5000/api/orders/${orderId}/stripe-client-secret`,
+              `/api/orders/${orderId}/stripe-client-secret`,
               {},
               {
                 headers: { authorization: `Bearer ${userInfo.token}` },
@@ -192,7 +192,7 @@ export default function OrderScreen() {
       }
     }else {
       const loadPaypalScript = async () => {
-        const { data: clientId } = await axios.get('http://127.0.0.1:5000/api/keys/paypal', {
+        const { data: clientId } = await axios.get('/api/keys/paypal', {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
         paypalDispatch({
@@ -242,7 +242,7 @@ export default function OrderScreen() {
       } else if (paymentIntent.status === 'succeeded') {
         // Send the payment confirmation to the backend
         const { data } = await axios.put(
-          `http://127.0.0.1:5000/api/orders/${orderId}/pay`,
+          `/api/orders/${orderId}/pay`,
           {
             id: paymentIntent.id, // The paymentIntent ID
             status: paymentIntent.status,
@@ -265,7 +265,7 @@ export default function OrderScreen() {
   useEffect(() => {
     const pollOrderStatus = async () => {
       const intervalId = setInterval(async () => {
-        const { data } = await axios.get(`http://127.0.0.1:5000/api/orders/${orderId}`, {
+        const { data } = await axios.get(`/api/orders/${orderId}`, {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
         

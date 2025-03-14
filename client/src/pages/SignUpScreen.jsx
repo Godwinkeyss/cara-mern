@@ -29,7 +29,7 @@ export default function SignupScreen() {
       return;
     }
     try {
-      const { data } = await Axios.post('http://127.0.0.1:5000/api/auth/signup', {
+      const { data } = await Axios.post('/api/auth/signup', {
         name,
         email,
         password,
