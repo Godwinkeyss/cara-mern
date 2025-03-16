@@ -34,8 +34,10 @@ const FeatureProduct = () => {
         const res = await axios.get('/api/products');
         // setProducts(res.data)
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
+        console.log("API Response:", res.data);
       } catch (error) {
         dispatch({ type: 'FETCH_FAIL', payload: error.message });
+        console.log("API Response:", error);
       }
     };
     fetchData();

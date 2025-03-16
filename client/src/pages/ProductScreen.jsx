@@ -69,6 +69,11 @@ const ProductScreen = () => {
     ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity: newQuantity } });
     navigate('/cart');
   };
+  useEffect(() => {
+    // Scroll to the top when the component is mounted
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures this runs only once when the page loads
+
 
   return (
     <>

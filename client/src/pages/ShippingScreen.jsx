@@ -34,6 +34,11 @@ const ShippingScreen = () => {
 
     navigate('/payment');
   };
+  useEffect(() => {
+    // Scroll to the top when the component is mounted
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures this runs only once when the page loads
+
 
   return (
     <div className="shipping">

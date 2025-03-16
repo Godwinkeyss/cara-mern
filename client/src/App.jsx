@@ -17,7 +17,9 @@ import OrderHistoryScreen from './pages/OrderHistoryScreen';
 import PaymentScreen from './pages/PaymentScreen';
 import ShippingScreen from './pages/ShippingScreen';
 import ProductScreen from './pages/ProductScreen';
+import AllProductScreen from './pages/AllProductScreen';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SearchScreen from './pages/SearchScreen';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,12 +37,14 @@ function App() {
               <Route path="/orderHistory" element={<OrderHistoryScreen />} />
               <Route path="/order/:id" element={<OrderScreen />} />
               <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route path="/search" element={<SearchScreen />} />
               <Route path="/payment" element={<PaymentScreen />} />
               <Route path="/shipping" element={<ShippingScreen />} />
               <Route path="/signup" element={<SignUpScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
               <Route path="/cart" element={<CartScreen />} />
+              <Route path="/allproduct/" element={<AllProductScreen />} />
               <Route path="/products/:slug" element={<ProductScreen />} />
               <Route path="/" element={<HomeScreen />} />
             </Routes>
