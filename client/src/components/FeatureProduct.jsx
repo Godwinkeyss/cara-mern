@@ -3,35 +3,42 @@ import data from '../data';
 import Product from './Product';
 import axios from 'axios';
 import LoadingBox from './LoadingBox'
-
+import {useLocation} from 'react-router-dom'
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true };
-
     case 'FETCH_SUCCESS':
-      return { ...state, loading: false, products: action.payload };
-
+      return {
+        ...state,
+        products: action.payload.products,
+        pages: action.payload.pages,
+        page: action.payload.page,
+        loading: false,
+      };
     case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, error: action.payload, loading: false };
     default:
       return state;
   }
 };
 const FeatureProduct = () => {
-  // const [products, setProducts] = useState([])
-  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
-    products: [],
-    loading: false,
-    error: '',
-  });
+  const { search } = useLocation();
+  const sp = new URLSearchParams(search);
+  const page = sp.get('page') || 1;
+   const [{ products, pages, loading, error }, dispatch] = useReducer(reducer, {
+     products: [],
+     pages: 1,
+     loading: true,
+     error: null,
+   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         // const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products`);
-        const res = await axios.get('/api/products');
+        const res = await axios.get(`/api/products?page=${page}`);
         // setProducts(res.data)
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
         console.log("API Response:", res.data);
